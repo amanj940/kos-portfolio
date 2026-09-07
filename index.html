@@ -1,20 +1,22 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>K.O.S — AI Agent System</title>
+  <title>K.O.S — Sovereign Multi-Agent AI Operating System</title>
+
   <meta
     name="description"
-    content="K.O.S is an AI agent system built around intelligent bots, squads, and autonomous workflows."
-  >
+    content="K.O.S is a sovereign multi-agent AI operating system built for intelligent orchestration, autonomous squads, secure execution, multi-provider AI, and controlled workflows."
+  />
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -22,11 +24,11 @@
     }
 
     body {
-      font-family: Inter, Arial, sans-serif;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 50% -10%, rgba(190, 150, 70, 0.16), transparent 35%),
-        #070707;
-      color: #f5f5f5;
+        radial-gradient(circle at 50% -10%, rgba(212, 175, 55, 0.13), transparent 38%),
+        #050505;
+      color: #f3f3f3;
       line-height: 1.6;
     }
 
@@ -36,228 +38,518 @@
     }
 
     .container {
-      width: min(1120px, 92%);
+      width: min(1180px, calc(100% - 40px));
       margin: auto;
     }
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      background: rgba(7, 7, 7, 0.72);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
+    /* NAV */
 
     nav {
-      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 5, 5, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-inner {
+      height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .logo {
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 3px;
-    }
-
-    .logo span {
-      color: #c9a45c;
+      font-size: 23px;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: #d8b35a;
     }
 
     .nav-links {
       display: flex;
       gap: 28px;
-      color: #aaa;
       font-size: 14px;
+      color: #aaa;
     }
 
     .nav-links a:hover {
-      color: #d6b36b;
+      color: #d8b35a;
     }
 
+    /* HERO */
+
     .hero {
-      min-height: 100vh;
+      min-height: 760px;
       display: flex;
       align-items: center;
       text-align: center;
-      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .badge {
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      left: 50%;
+      top: 5%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.06);
+      filter: blur(90px);
+    }
+
+    .hero-content {
+      position: relative;
+      width: 100%;
+    }
+
+    .eyebrow {
       display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid rgba(201,164,92,0.35);
+      padding: 8px 15px;
+      border: 1px solid rgba(216,179,90,0.35);
       border-radius: 999px;
-      color: #d6b36b;
-      background: rgba(201,164,92,0.06);
-      font-size: 13px;
-      margin-bottom: 28px;
+      color: #d8b35a;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      background: rgba(216,179,90,0.05);
     }
 
     h1 {
-      font-size: clamp(52px, 9vw, 100px);
-      line-height: 0.95;
-      letter-spacing: -4px;
-      margin-bottom: 28px;
-    }
-
-    h1 span {
-      background: linear-gradient(135deg, #fff, #c9a45c);
+      font-size: clamp(58px, 10vw, 120px);
+      line-height: 0.9;
+      letter-spacing: -6px;
+      margin-bottom: 30px;
+      background: linear-gradient(120deg, #fff, #d8b35a 48%, #8d6d2f);
       -webkit-background-clip: text;
       color: transparent;
     }
 
-    .hero p {
-      max-width: 700px;
+    .hero h2 {
+      font-size: clamp(22px, 4vw, 42px);
+      max-width: 900px;
       margin: auto;
-      color: #aaa;
-      font-size: 19px;
+      line-height: 1.15;
+      color: #e8e8e8;
     }
 
-    .buttons {
-      margin-top: 38px;
+    .hero-description {
+      max-width: 780px;
+      margin: 28px auto;
+      color: #999;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
       display: flex;
       justify-content: center;
       gap: 14px;
+      margin-top: 34px;
       flex-wrap: wrap;
     }
 
-    .button {
-      padding: 13px 24px;
+    .btn {
+      padding: 14px 24px;
       border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
+      font-weight: 700;
+      border: 1px solid rgba(216,179,90,0.35);
       transition: 0.25s;
     }
 
-    .button.primary {
-      background: linear-gradient(135deg, #c9a45c, #8d6b2e);
+    .btn-primary {
+      background: linear-gradient(135deg, #d8b35a, #8d6d2f);
       color: #080808;
-      border: none;
-      font-weight: 700;
     }
 
-    .button:hover {
-      transform: translateY(-2px);
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: #ddd;
     }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(216,179,90,0.15);
+    }
+
+    /* SYSTEM STATUS */
+
+    .status-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 65px;
+    }
+
+    .status {
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.025);
+      border-radius: 14px;
+    }
+
+    .status strong {
+      display: block;
+      color: #d8b35a;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .status span {
+      font-size: 12px;
+      color: #777;
+    }
+
+    /* SECTIONS */
 
     section {
-      padding: 100px 0;
+      padding: 110px 0;
+    }
+
+    .section-label {
+      color: #d8b35a;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
     }
 
     .section-title {
-      text-align: center;
-      margin-bottom: 55px;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.05;
+      margin-bottom: 22px;
     }
 
-    .section-title h2 {
-      font-size: 42px;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
+    .section-description {
       color: #888;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .card {
-      padding: 30px;
-      min-height: 220px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.035);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      color: #d6b36b;
-    }
-
-    .card p {
-      color: #999;
-      font-size: 15px;
-    }
-
-    .architecture {
-      text-align: center;
-    }
-
-    .architecture-box {
-      max-width: 850px;
-      margin: auto;
-      padding: 45px;
-      border-radius: 24px;
-      border: 1px solid rgba(201,164,92,0.18);
-      background: linear-gradient(
-        145deg,
-        rgba(201,164,92,0.08),
-        rgba(255,255,255,0.025)
-      );
-    }
-
-    .architecture-box strong {
-      color: #d6b36b;
-      font-size: 20px;
-    }
-
-    .flow {
-      margin-top: 25px;
-      color: #aaa;
+      max-width: 760px;
       font-size: 17px;
     }
 
-    .cta {
-      text-align: center;
-      padding-bottom: 120px;
+    /* CAPABILITIES */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 50px;
     }
 
-    .cta-box {
-      padding: 70px 30px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at center, rgba(201,164,92,0.14), transparent 60%),
-        rgba(255,255,255,0.035);
+    .card {
+      padding: 32px;
+      border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+      transition: 0.3s;
     }
 
-    .cta h2 {
-      font-size: 45px;
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(216,179,90,0.3);
+    }
+
+    .card-icon {
+      font-size: 28px;
       margin-bottom: 18px;
     }
 
-    .cta p {
+    .card h3 {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #888;
+    }
+
+    .card ul {
+      margin-top: 18px;
+      padding-left: 20px;
       color: #999;
-      margin-bottom: 30px;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    /* ARCHITECTURE */
+
+    .architecture {
+      margin-top: 55px;
+      padding: 45px;
+      border-radius: 20px;
+      border: 1px solid rgba(216,179,90,0.2);
+      background: rgba(216,179,90,0.025);
+      text-align: center;
+    }
+
+    .flow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .node {
+      padding: 17px 22px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #ddd;
+      font-weight: 700;
+    }
+
+    .arrow {
+      color: #d8b35a;
+      font-size: 22px;
+    }
+
+    .architecture-layers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 35px;
+    }
+
+    .layer {
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      color: #999;
+      font-size: 13px;
+    }
+
+    .layer strong {
+      display: block;
+      color: #d8b35a;
+      margin-bottom: 5px;
+    }
+
+    /* SECURITY */
+
+    .security {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.015);
+    }
+
+    .security-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 50px;
+    }
+
+    .security-item {
+      padding: 25px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+    }
+
+    .security-item strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ddd;
+    }
+
+    .security-item span {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* SQUADS */
+
+    .squad-visual {
+      margin-top: 55px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .squad-box {
+      padding: 35px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .squad-box h3 {
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .agent {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: #aaa;
+    }
+
+    .agent:last-child {
+      border-bottom: 0;
+    }
+
+    .agent span {
+      color: #d8b35a;
+    }
+
+    /* PROVIDERS */
+
+    .provider-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .provider {
+      padding: 13px 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      color: #bbb;
+    }
+
+    /* GROWTH */
+
+    .growth-flow {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .growth-step {
+      padding: 28px 18px;
+      border: 1px solid rgba(216,179,90,0.18);
+      border-radius: 14px;
+      text-align: center;
+      background: rgba(216,179,90,0.025);
+    }
+
+    .growth-step strong {
+      display: block;
+      color: #d8b35a;
+      margin-bottom: 8px;
+    }
+
+    .growth-step span {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* STACK */
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .tech {
+      padding: 12px 17px;
+      border-radius: 9px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      padding: 130px 20px;
+    }
+
+    .cta h2 {
+      font-size: clamp(40px, 7vw, 78px);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .cta p {
+      color: #888;
+      max-width: 650px;
+      margin: auto auto 35px;
+      font-size: 17px;
     }
 
     footer {
       border-top: 1px solid rgba(255,255,255,0.07);
-      padding: 30px 0;
+      padding: 28px 0;
       color: #666;
-      text-align: center;
       font-size: 13px;
+      text-align: center;
     }
 
-    @media (max-width: 800px) {
+    /* MOBILE */
+
+    @media (max-width: 850px) {
       .nav-links {
         display: none;
       }
 
-      .grid {
+      .status-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cards,
+      .squad-visual {
         grid-template-columns: 1fr;
       }
 
+      .architecture-layers {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .security-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .growth-flow {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 680px;
+      }
+
       h1 {
-        letter-spacing: -2px;
+        letter-spacing: -3px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 26px, 1180px);
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .status-grid,
+      .architecture-layers,
+      .security-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .architecture {
+        padding: 25px 15px;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
       }
     }
   </style>
@@ -265,180 +557,605 @@
 
 <body>
 
-  <header>
-    <div class="container">
-      <nav>
-        <div class="logo">K<span>.</span>O<span>.</span>S</div>
+  <!-- NAVIGATION -->
 
-        <div class="nav-links">
-          <a href="#system">System</a>
-          <a href="#architecture">Architecture</a>
-          <a href="#growth">Growth</a>
-          <a href="#contact">Contact</a>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#" class="logo">K.O.S</a>
+
+      <div class="nav-links">
+        <a href="#system">System</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#security">Security</a>
+        <a href="#growth">Growth</a>
+        <a href="#technology">Technology</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <header class="hero">
+    <div class="container hero-content">
+
+      <div class="eyebrow">
+        Sovereign Multi-Agent AI Platform
+      </div>
+
+      <h1>K.O.S</h1>
+
+      <h2>
+        Intelligence built to operate as a system.
+      </h2>
+
+      <p class="hero-description">
+        K.O.S — Kozer Operating System — is a sovereign multi-agent AI
+        operating environment designed to understand complex requests,
+        orchestrate specialized AI teams, execute controlled workflows,
+        and operate across multiple AI providers.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#system">
+          Explore the System
+        </a>
+
+        <a
+          class="btn btn-secondary"
+          href="https://github.com/amanj940/K.O.S-boT"
+          target="_blank"
+        >
+          View on GitHub
+        </a>
+      </div>
+
+      <div class="status-grid">
+
+        <div class="status">
+          <strong>Multi-Agent</strong>
+          <span>Specialized intelligent agents</span>
         </div>
-      </nav>
+
+        <div class="status">
+          <strong>Squad-Based</strong>
+          <span>Coordinated AI teams</span>
+        </div>
+
+        <div class="status">
+          <strong>Secure Runtime</strong>
+          <span>Controlled execution boundaries</span>
+        </div>
+
+        <div class="status">
+          <strong>Multi-Provider</strong>
+          <span>Resilient AI infrastructure</span>
+        </div>
+
+      </div>
+
     </div>
   </header>
 
-  <main>
+  <!-- SYSTEM -->
 
-    <section class="hero">
-      <div class="container">
+  <section id="system">
+    <div class="container">
 
-        <div class="badge">AI AGENT SYSTEM</div>
+      <div class="section-label">01 — The System</div>
 
-        <h1>
-          Intelligence<br>
-          <span>in motion.</span>
-        </h1>
+      <h2 class="section-title">
+        Not a chatbot.<br />
+        A complete AI execution environment.
+      </h2>
 
-        <p>
-          K.O.S is an AI agent system built to coordinate intelligent
-          bots, squads, tools, and workflows inside one unified environment.
-        </p>
+      <p class="section-description">
+        Traditional AI applications often revolve around a single model
+        responding to a single conversation. K.O.S is designed differently:
+        intelligence, agents, squads, tools, security, memory, providers,
+        and execution are coordinated as one system.
+      </p>
 
-        <div class="buttons">
-          <a class="button primary" href="#system">Explore K.O.S</a>
-          <a class="button" href="https://github.com/amanj940/K.O.S-boT" target="_blank">
-            View on GitHub
-          </a>
-        </div>
+      <div class="cards">
 
-      </div>
-    </section>
-
-
-    <section id="system">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>One System. Many Agents.</h2>
-          <p>Designed around collaboration between specialized AI agents.</p>
-        </div>
-
-        <div class="grid">
-
-          <div class="card">
-            <h3>Bots</h3>
-            <p>
-              Specialized AI agents designed for focused tasks,
-              reasoning, research, development, security, and operations.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Squads</h3>
-            <p>
-              Multiple agents working together through coordinated
-              workflows instead of operating as isolated chatbots.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Intelligence</h3>
-            <p>
-              A central intelligence layer interprets requests,
-              determines intent, and routes work to the appropriate capabilities.
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-    <section id="architecture">
-      <div class="container architecture">
-
-        <div class="section-title">
-          <h2>Built as a System</h2>
-          <p>Modular architecture designed for controlled expansion.</p>
-        </div>
-
-        <div class="architecture-box">
-          <strong>User → Intelligence → Agents → Tools → Result</strong>
-
-          <div class="flow">
-            K.O.S combines agent runtimes, squads, intelligence,
-            security, tools, providers, memory, and persistent data
-            into one coherent architecture.
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <section id="growth">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Growth System</h2>
-          <p>Turning intelligence into real-world opportunities.</p>
-        </div>
-
-        <div class="grid">
-
-          <div class="card">
-            <h3>Research</h3>
-            <p>
-              Discover markets, companies, projects, problems,
-              and opportunities that match available capabilities.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Opportunities</h3>
-            <p>
-              Analyze leads and identify potential services,
-              projects, and business opportunities.
-            </p>
-          </div>
-
-          <div class="card">
-            <h3>Outreach</h3>
-            <p>
-              Prepare personalized communication while keeping
-              external communication under controlled approval.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <section id="contact" class="cta">
-      <div class="container">
-
-        <div class="cta-box">
-
-          <h2>Build with K.O.S</h2>
+        <div class="card">
+          <div class="card-icon">🧠</div>
+          <h3>Executive Intelligence</h3>
 
           <p>
-            Interested in AI agents, automation, intelligent workflows,
-            or custom AI systems?
+            A central intelligence layer interprets what the user actually
+            wants and determines how the request should be executed.
           </p>
 
-          <a
-            class="button primary"
-            href="mailto:YOUR_EMAIL@example.com"
-          >
-            Contact
-          </a>
+          <ul>
+            <li>Semantic classification</li>
+            <li>Intent routing</li>
+            <li>Dynamic task parsing</li>
+            <li>Arabic & English understanding</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">👥</div>
+          <h3>AI Squads</h3>
+
+          <p>
+            Specialized agents can operate together as coordinated teams
+            instead of isolated chatbots.
+          </p>
+
+          <ul>
+            <li>Specialized agent roles</li>
+            <li>Coordinated workflows</li>
+            <li>Squad isolation</li>
+            <li>Deterministic execution</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Unified Execution</h3>
+
+          <p>
+            K.O.S connects intelligence to actual execution through a unified
+            runtime and controlled tool layer.
+          </p>
+
+          <ul>
+            <li>Agent Runtime</li>
+            <li>Squad Runtime</li>
+            <li>Tool execution</li>
+            <li>Workflow coordination</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🔄</div>
+          <h3>Resilient AI Gateway</h3>
+
+          <p>
+            K.O.S is designed to work across multiple AI providers instead
+            of depending on one model or vendor.
+          </p>
+
+          <ul>
+            <li>Provider abstraction</li>
+            <li>Automatic failover</li>
+            <li>Rate-limit handling</li>
+            <li>Local-first with cloud readiness</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+
+  <section id="architecture">
+    <div class="container">
+
+      <div class="section-label">02 — Architecture</div>
+
+      <h2 class="section-title">
+        Intelligence → Orchestration → Execution
+      </h2>
+
+      <p class="section-description">
+        K.O.S separates understanding, orchestration, execution, security,
+        and provider infrastructure into coordinated layers.
+      </p>
+
+      <div class="architecture">
+
+        <div class="flow">
+
+          <div class="node">User</div>
+
+          <div class="arrow">→</div>
+
+          <div class="node">Executive Intelligence</div>
+
+          <div class="arrow">→</div>
+
+          <div class="node">Intent Routing</div>
+
+          <div class="arrow">→</div>
+
+          <div class="node">Bots / Squads</div>
+
+          <div class="arrow">→</div>
+
+          <div class="node">Agent Runtime</div>
+
+          <div class="arrow">→</div>
+
+          <div class="node">Tools</div>
+
+          <div class="arrow">→</div>
+
+          <div class="node">Result</div>
+
+        </div>
+
+        <div class="architecture-layers">
+
+          <div class="layer">
+            <strong>Intelligence</strong>
+            Understanding & routing
+          </div>
+
+          <div class="layer">
+            <strong>Runtime</strong>
+            Controlled execution
+          </div>
+
+          <div class="layer">
+            <strong>Security</strong>
+            Permissions & boundaries
+          </div>
+
+          <div class="layer">
+            <strong>Providers</strong>
+            Local & cloud AI
+          </div>
 
         </div>
 
       </div>
-    </section>
 
-  </main>
+    </div>
+  </section>
 
+  <!-- SECURITY -->
+
+  <section id="security" class="security">
+    <div class="container">
+
+      <div class="section-label">03 — Security</div>
+
+      <h2 class="section-title">
+        Powerful agents.<br />
+        Controlled boundaries.
+      </h2>
+
+      <p class="section-description">
+        K.O.S treats security as part of the runtime architecture rather
+        than an afterthought. Agents can be powerful without receiving
+        unrestricted access to the host environment.
+      </p>
+
+      <div class="security-grid">
+
+        <div class="security-item">
+          <strong>WorkspaceGuard</strong>
+          <span>Workspace confinement</span>
+        </div>
+
+        <div class="security-item">
+          <strong>PermissionManager</strong>
+          <span>Least-privilege policies</span>
+        </div>
+
+        <div class="security-item">
+          <strong>Tool Validation</strong>
+          <span>Controlled capabilities</span>
+        </div>
+
+        <div class="security-item">
+          <strong>Human Approval</strong>
+          <span>Sensitive operations</span>
+        </div>
+
+        <div class="security-item">
+          <strong>Squad Isolation</strong>
+          <span>Separated contexts</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SQUADS -->
+
+  <section>
+    <div class="container">
+
+      <div class="section-label">04 — Agent Teams</div>
+
+      <h2 class="section-title">
+        AI teams instead of isolated agents.
+      </h2>
+
+      <p class="section-description">
+        K.O.S allows specialized agents to work together through coordinated
+        squad workflows. Each role focuses on a responsibility while the
+        system controls the overall execution.
+      </p>
+
+      <div class="squad-visual">
+
+        <div class="squad-box">
+
+          <h3>Example Engineering Squad</h3>
+
+          <div class="agent">
+            <span>01</span>
+            Lead Architect
+          </div>
+
+          <div class="agent">
+            <span>02</span>
+            Software Engineer
+          </div>
+
+          <div class="agent">
+            <span>03</span>
+            Security Sentinel
+          </div>
+
+          <div class="agent">
+            <span>04</span>
+            QA Engineer
+          </div>
+
+        </div>
+
+        <div class="squad-box">
+
+          <h3>How It Works</h3>
+
+          <div class="agent">
+            <span>01</span>
+            Understand
+          </div>
+
+          <div class="agent">
+            <span>02</span>
+            Plan
+          </div>
+
+          <div class="agent">
+            <span>03</span>
+            Assign
+          </div>
+
+          <div class="agent">
+            <span>04</span>
+            Execute
+          </div>
+
+          <div class="agent">
+            <span>05</span>
+            Aggregate
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROVIDERS -->
+
+  <section>
+    <div class="container">
+
+      <div class="section-label">05 — AI Infrastructure</div>
+
+      <h2 class="section-title">
+        One system.<br />
+        Multiple intelligence providers.
+      </h2>
+
+      <p class="section-description">
+        The provider layer abstracts different AI backends so K.O.S can
+        remain flexible, resilient, and local-first.
+      </p>
+
+      <div class="provider-list">
+
+        <div class="provider">Google Gemini</div>
+        <div class="provider">Groq</div>
+        <div class="provider">DeepSeek</div>
+        <div class="provider">Ollama</div>
+        <div class="provider">OpenAI-Compatible Providers</div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GROWTH -->
+
+  <section id="growth">
+    <div class="container">
+
+      <div class="section-label">06 — Growth Intelligence</div>
+
+      <h2 class="section-title">
+        Intelligence that can discover opportunities.
+      </h2>
+
+      <p class="section-description">
+        The Growth capability extends K.O.S beyond conversation into
+        research, lead discovery, opportunity analysis, content generation,
+        and controlled outreach preparation.
+      </p>
+
+      <div class="growth-flow">
+
+        <div class="growth-step">
+          <strong>Research</strong>
+          <span>Discover markets, problems and opportunities.</span>
+        </div>
+
+        <div class="growth-step">
+          <strong>Leads</strong>
+          <span>Identify relevant companies, projects and prospects.</span>
+        </div>
+
+        <div class="growth-step">
+          <strong>Opportunities</strong>
+          <span>Analyze potential services and business value.</span>
+        </div>
+
+        <div class="growth-step">
+          <strong>Content</strong>
+          <span>Create useful and targeted material.</span>
+        </div>
+
+        <div class="growth-step">
+          <strong>Outreach</strong>
+          <span>Prepare personalized communication with approval.</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TECHNOLOGY -->
+
+  <section id="technology">
+    <div class="container">
+
+      <div class="section-label">07 — Technology</div>
+
+      <h2 class="section-title">
+        Built with modern infrastructure.
+      </h2>
+
+      <p class="section-description">
+        K.O.S combines a modern desktop interface, typed application core,
+        execution services, provider abstraction, testing infrastructure,
+        and container-ready deployment.
+      </p>
+
+      <div class="stack">
+
+        <div class="tech">TypeScript</div>
+        <div class="tech">React 19</div>
+        <div class="tech">Electron</div>
+        <div class="tech">Vite</div>
+        <div class="tech">TailwindCSS</div>
+        <div class="tech">Node.js</div>
+        <div class="tech">Docker</div>
+        <div class="tech">Supabase</div>
+        <div class="tech">Jest</div>
+        <div class="tech">Playwright</div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- DEPLOYMENT -->
+
+  <section>
+    <div class="container">
+
+      <div class="section-label">08 — Deployment</div>
+
+      <h2 class="section-title">
+        Local-first.<br />
+        Desktop-ready. Cloud-capable.
+      </h2>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>Local AI</h3>
+          <p>
+            Run private AI infrastructure locally with providers such as
+            Ollama while keeping execution close to the user's environment.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Desktop</h3>
+          <p>
+            K.O.S is designed as a native desktop environment through
+            Electron, with desktop packaging support.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Control Plane</h3>
+          <p>
+            Backend services provide a foundation for headless and
+            programmatic execution.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Docker</h3>
+          <p>
+            Containerized deployment provides a path toward scalable
+            infrastructure and cloud execution.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+
+  <section id="contact" class="cta">
+
+    <div class="container">
+
+      <div class="section-label">
+        The Vision
+      </div>
+
+      <h2>
+        AI with purpose.<br />
+        Intelligence with control.
+      </h2>
+
+      <p>
+        K.O.S is being built as a new kind of AI environment — where
+        intelligence is not limited to conversation, agents have defined
+        responsibilities, squads collaborate, and execution happens inside
+        controlled boundaries.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a
+          class="btn btn-primary"
+          href="https://github.com/amanj940/K.O.S-boT"
+          target="_blank"
+        >
+          Explore K.O.S on GitHub
+        </a>
+
+        <a
+          class="btn btn-secondary"
+          href="mailto:YOUR_EMAIL@example.com"
+        >
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
 
   <footer>
-    © 2026 K.O.S — AI Agent System
+    <div class="container">
+      © 2026 K.O.S — Kozer Operating System
+    </div>
   </footer>
 
 </body>
 </html>
+```
