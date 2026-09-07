@@ -1,17 +1,10 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>K.O.S — Sovereign Multi-Agent AI Operating System</title>
-
-  <meta
-    name="description"
-    content="K.O.S is a sovereign multi-agent AI operating system built for intelligent orchestration, autonomous squads, secure execution, multi-provider AI, and controlled workflows."
-  />
-
+  <title>K.O.S — Sovereign Multi-Agent AI OS</title>
+  <meta name="description" content="K.O.S is a sovereign multi-agent AI operating system built for intelligent orchestration, autonomous squads, secure execution, multi-provider AI, and controlled workflows." />
   <style>
     * {
       box-sizing: border-box;
@@ -24,12 +17,41 @@
     }
 
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 50% -10%, rgba(212, 175, 55, 0.13), transparent 38%),
-        #050505;
-      color: #f3f3f3;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0b0a08;
+      color: #ece7e0;
       line-height: 1.6;
+      transition: background 0.2s;
+    }
+
+    /* RTL support for Arabic, Kurdish, Turkish */
+    [dir="rtl"] {
+      font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    [dir="rtl"] .container,
+    [dir="rtl"] .nav-inner,
+    [dir="rtl"] .hero-content,
+    [dir="rtl"] .cards,
+    [dir="rtl"] .squad-visual,
+    [dir="rtl"] .flow,
+    [dir="rtl"] .provider-list,
+    [dir="rtl"] .stack,
+    [dir="rtl"] .status-grid,
+    [dir="rtl"] .security-grid,
+    [dir="rtl"] .growth-flow,
+    [dir="rtl"] .architecture-layers {
+      direction: rtl;
+      text-align: right;
+    }
+
+    [dir="rtl"] .nav-links {
+      gap: 20px;
+    }
+
+    [dir="rtl"] .arrow {
+      transform: scaleX(-1);
+      display: inline-block;
     }
 
     a {
@@ -38,50 +60,59 @@
     }
 
     .container {
-      width: min(1180px, calc(100% - 40px));
+      width: min(1200px, calc(100% - 40px));
       margin: auto;
     }
 
-    /* NAV */
-
+    /* ---- NAV ---- */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(18px);
-      background: rgba(5, 5, 5, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(24px);
+      background: rgba(11, 10, 8, 0.8);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .nav-inner {
-      height: 74px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .logo {
-      font-size: 23px;
+      font-size: 26px;
       font-weight: 900;
-      letter-spacing: 4px;
-      color: #d8b35a;
+      letter-spacing: 6px;
+      background: linear-gradient(145deg, #e4c580, #a8843a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 32px;
       font-size: 14px;
-      color: #aaa;
+      font-weight: 500;
+      color: #b1a79a;
+    }
+
+    .nav-links a {
+      transition: 0.2s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
     }
 
     .nav-links a:hover {
-      color: #d8b35a;
+      color: #e4c580;
+      border-bottom-color: #e4c580;
     }
 
-    /* HERO */
-
+    /* ---- HERO ---- */
     .hero {
-      min-height: 760px;
+      min-height: 780px;
       display: flex;
       align-items: center;
       text-align: center;
@@ -92,14 +123,15 @@
     .hero::before {
       content: "";
       position: absolute;
-      width: 650px;
-      height: 650px;
+      width: 800px;
+      height: 800px;
       left: 50%;
-      top: 5%;
+      top: 10%;
       transform: translateX(-50%);
       border-radius: 50%;
-      background: rgba(212, 175, 55, 0.06);
-      filter: blur(90px);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
     }
 
     .hero-content {
@@ -109,183 +141,225 @@
 
     .eyebrow {
       display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid rgba(216,179,90,0.35);
+      padding: 10px 22px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: 999px;
-      color: #d8b35a;
-      font-size: 12px;
-      letter-spacing: 2px;
+      color: #dbb96a;
+      font-size: 13px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      margin-bottom: 30px;
-      background: rgba(216,179,90,0.05);
+      margin-bottom: 32px;
+      background: rgba(212, 175, 55, 0.05);
+      backdrop-filter: blur(4px);
     }
 
     h1 {
-      font-size: clamp(58px, 10vw, 120px);
-      line-height: 0.9;
-      letter-spacing: -6px;
-      margin-bottom: 30px;
-      background: linear-gradient(120deg, #fff, #d8b35a 48%, #8d6d2f);
+      font-size: clamp(64px, 12vw, 140px);
+      line-height: 0.85;
+      letter-spacing: -8px;
+      margin-bottom: 24px;
+      background: linear-gradient(145deg, #ffffff 10%, #e4c580 45%, #a8843a 80%);
       -webkit-background-clip: text;
-      color: transparent;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
     }
 
     .hero h2 {
-      font-size: clamp(22px, 4vw, 42px);
-      max-width: 900px;
+      font-size: clamp(24px, 4.5vw, 48px);
+      max-width: 850px;
       margin: auto;
-      line-height: 1.15;
-      color: #e8e8e8;
+      line-height: 1.1;
+      color: #d6d0c7;
+      font-weight: 400;
+      letter-spacing: -0.5px;
     }
 
     .hero-description {
       max-width: 780px;
       margin: 28px auto;
-      color: #999;
+      color: #a89f92;
       font-size: 18px;
+      font-weight: 300;
     }
 
     .hero-buttons {
       display: flex;
       justify-content: center;
-      gap: 14px;
-      margin-top: 34px;
+      gap: 18px;
+      margin-top: 38px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 14px 24px;
-      border-radius: 10px;
-      font-weight: 700;
-      border: 1px solid rgba(216,179,90,0.35);
-      transition: 0.25s;
+      padding: 16px 32px;
+      border-radius: 60px;
+      font-weight: 600;
+      transition: 0.3s;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      font-size: 15px;
+      letter-spacing: 0.3px;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #d8b35a, #8d6d2f);
-      color: #080808;
+      background: linear-gradient(145deg, #dbb96a, #a07d34);
+      color: #0b0a08;
+      border-color: #dbb96a;
+      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 14px 40px rgba(212, 175, 55, 0.3);
     }
 
     .btn-secondary {
-      background: rgba(255,255,255,0.04);
-      color: #ddd;
+      background: rgba(255, 255, 255, 0.04);
+      color: #d6d0c7;
+      border-color: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(216,179,90,0.15);
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-4px);
     }
 
-    /* SYSTEM STATUS */
-
+    /* ---- STATUS ---- */
     .status-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin-top: 65px;
+      gap: 18px;
+      margin-top: 70px;
     }
 
     .status {
-      padding: 20px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.025);
-      border-radius: 14px;
+      padding: 24px 20px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      transition: 0.25s;
+    }
+
+    .status:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      background: rgba(212, 175, 55, 0.04);
+      transform: translateY(-3px);
     }
 
     .status strong {
       display: block;
-      color: #d8b35a;
-      font-size: 18px;
-      margin-bottom: 4px;
+      color: #e4c580;
+      font-size: 20px;
+      margin-bottom: 6px;
+      font-weight: 700;
     }
 
     .status span {
-      font-size: 12px;
-      color: #777;
+      font-size: 13px;
+      color: #8a8174;
+      font-weight: 300;
     }
 
-    /* SECTIONS */
-
+    /* ---- SECTIONS ---- */
     section {
       padding: 110px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
     .section-label {
-      color: #d8b35a;
+      color: #dbb96a;
       font-size: 12px;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      font-weight: 600;
     }
 
     .section-title {
-      font-size: clamp(34px, 5vw, 62px);
-      line-height: 1.05;
+      font-size: clamp(36px, 5.5vw, 68px);
+      line-height: 1.02;
       margin-bottom: 22px;
+      font-weight: 700;
+      letter-spacing: -1px;
     }
 
     .section-description {
-      color: #888;
-      max-width: 760px;
+      color: #a89f92;
+      max-width: 740px;
       font-size: 17px;
+      font-weight: 300;
     }
 
-    /* CAPABILITIES */
-
+    /* ---- CARDS (capabilities) ---- */
     .cards {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 50px;
+      gap: 24px;
+      margin-top: 52px;
     }
 
     .card {
-      padding: 32px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
-      transition: 0.3s;
+      padding: 36px 32px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.005));
+      transition: 0.35s;
+      backdrop-filter: blur(2px);
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(216,179,90,0.3);
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.25);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
     }
 
     .card-icon {
-      font-size: 28px;
+      font-size: 32px;
       margin-bottom: 18px;
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.08);
+      padding: 10px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 175, 55, 0.1);
     }
 
     .card h3 {
-      font-size: 23px;
+      font-size: 24px;
       margin-bottom: 12px;
+      color: #ece7e0;
+      font-weight: 600;
     }
 
     .card p {
-      color: #888;
+      color: #a89f92;
+      font-weight: 300;
     }
 
     .card ul {
-      margin-top: 18px;
-      padding-left: 20px;
-      color: #999;
+      margin-top: 20px;
+      padding-left: 22px;
+      color: #b8afa2;
+      font-weight: 300;
+      font-size: 15px;
+      list-style-type: '✦ ';
     }
 
     .card li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      padding-left: 6px;
     }
 
-    /* ARCHITECTURE */
-
+    /* ---- ARCHITECTURE ---- */
     .architecture {
       margin-top: 55px;
-      padding: 45px;
-      border-radius: 20px;
-      border: 1px solid rgba(216,179,90,0.2);
-      background: rgba(216,179,90,0.025);
+      padding: 48px 40px;
+      border-radius: 28px;
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      background: rgba(212, 175, 55, 0.02);
       text-align: center;
+      backdrop-filter: blur(4px);
     }
 
     .flow {
@@ -293,104 +367,120 @@
       justify-content: center;
       align-items: center;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px 16px;
     }
 
     .node {
-      padding: 17px 22px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.055);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #ddd;
-      font-weight: 700;
+      padding: 16px 24px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: #d6d0c7;
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
     }
 
     .arrow {
-      color: #d8b35a;
-      font-size: 22px;
+      color: #dbb96a;
+      font-size: 24px;
+      font-weight: 300;
+      opacity: 0.7;
     }
 
     .architecture-layers {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 35px;
+      gap: 14px;
+      margin-top: 40px;
     }
 
     .layer {
-      padding: 18px;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 10px;
-      color: #999;
+      padding: 20px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      color: #a89f92;
       font-size: 13px;
+      background: rgba(0, 0, 0, 0.2);
     }
 
     .layer strong {
       display: block;
-      color: #d8b35a;
-      margin-bottom: 5px;
+      color: #e4c580;
+      margin-bottom: 6px;
+      font-weight: 600;
     }
 
-    /* SECURITY */
-
+    /* ---- SECURITY ---- */
     .security {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.015);
+      border-top: 1px solid rgba(212, 175, 55, 0.08);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+      background: rgba(212, 175, 55, 0.015);
     }
 
     .security-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
+      gap: 14px;
       margin-top: 50px;
     }
 
     .security-item {
-      padding: 25px 18px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
       text-align: center;
+      background: rgba(0, 0, 0, 0.2);
+      transition: 0.2s;
+    }
+
+    .security-item:hover {
+      border-color: rgba(212, 175, 55, 0.25);
     }
 
     .security-item strong {
       display: block;
       margin-bottom: 8px;
-      color: #ddd;
+      color: #e4c580;
+      font-weight: 600;
     }
 
     .security-item span {
-      color: #777;
+      color: #8a8174;
       font-size: 13px;
+      font-weight: 300;
     }
 
-    /* SQUADS */
-
+    /* ---- SQUADS ---- */
     .squad-visual {
       margin-top: 55px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 24px;
     }
 
     .squad-box {
-      padding: 35px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.025);
+      padding: 38px 32px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.02);
     }
 
     .squad-box h3 {
       font-size: 26px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+      font-weight: 600;
+      color: #ece7e0;
     }
 
     .agent {
       display: flex;
       justify-content: space-between;
-      padding: 15px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      color: #aaa;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: #b8afa2;
+      font-weight: 300;
     }
 
     .agent:last-child {
@@ -398,764 +488,438 @@
     }
 
     .agent span {
-      color: #d8b35a;
+      color: #dbb96a;
+      font-weight: 500;
     }
 
-    /* PROVIDERS */
-
+    /* ---- PROVIDERS ---- */
     .provider-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 40px;
+      gap: 14px;
+      margin-top: 42px;
     }
 
     .provider {
-      padding: 13px 20px;
-      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px 24px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-      color: #bbb;
+      background: rgba(255, 255, 255, 0.02);
+      color: #cbc3b6;
+      font-weight: 400;
+      font-size: 14px;
+      backdrop-filter: blur(4px);
+      transition: 0.2s;
     }
 
-    /* GROWTH */
+    .provider:hover {
+      border-color: #dbb96a;
+      color: #ece7e0;
+    }
 
+    /* ---- GROWTH ---- */
     .growth-flow {
-      margin-top: 50px;
+      margin-top: 52px;
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 12px;
+      gap: 16px;
     }
 
     .growth-step {
-      padding: 28px 18px;
-      border: 1px solid rgba(216,179,90,0.18);
-      border-radius: 14px;
+      padding: 32px 16px;
+      border: 1px solid rgba(212, 175, 55, 0.12);
+      border-radius: 20px;
       text-align: center;
-      background: rgba(216,179,90,0.025);
+      background: rgba(212, 175, 55, 0.02);
+      transition: 0.3s;
+    }
+
+    .growth-step:hover {
+      border-color: rgba(212, 175, 55, 0.35);
+      transform: translateY(-4px);
     }
 
     .growth-step strong {
       display: block;
-      color: #d8b35a;
-      margin-bottom: 8px;
+      color: #e4c580;
+      margin-bottom: 10px;
+      font-size: 18px;
     }
 
     .growth-step span {
-      color: #777;
+      color: #8a8174;
       font-size: 13px;
+      font-weight: 300;
     }
 
-    /* STACK */
-
+    /* ---- STACK ---- */
     .stack {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 40px;
+      gap: 14px;
+      margin-top: 44px;
     }
 
     .tech {
-      padding: 12px 17px;
-      border-radius: 9px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #ccc;
+      padding: 12px 22px;
+      border-radius: 40px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #cbc3b6;
       font-size: 14px;
+      font-weight: 400;
+      transition: 0.15s;
     }
 
-    /* CTA */
+    .tech:hover {
+      border-color: rgba(212, 175, 55, 0.25);
+      color: #ece7e0;
+    }
 
+    /* ---- CTA ---- */
     .cta {
       text-align: center;
       padding: 130px 20px;
+      border-bottom: 0;
     }
 
     .cta h2 {
-      font-size: clamp(40px, 7vw, 78px);
+      font-size: clamp(44px, 7vw, 84px);
       line-height: 1;
-      margin-bottom: 25px;
+      margin-bottom: 28px;
+      font-weight: 700;
     }
 
     .cta p {
-      color: #888;
+      color: #a89f92;
       max-width: 650px;
-      margin: auto auto 35px;
+      margin: auto auto 40px;
       font-size: 17px;
+      font-weight: 300;
     }
 
     footer {
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding: 28px 0;
-      color: #666;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 32px 0;
+      color: #6a6257;
       font-size: 13px;
       text-align: center;
+      letter-spacing: 1px;
     }
 
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      .nav-links {
-        display: none;
-      }
-
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 950px) {
       .status-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
       .cards,
       .squad-visual {
         grid-template-columns: 1fr;
       }
-
       .architecture-layers {
         grid-template-columns: repeat(2, 1fr);
       }
-
       .security-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
       .growth-flow {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
       }
-
       .hero {
         min-height: 680px;
       }
-
       h1 {
-        letter-spacing: -3px;
+        letter-spacing: -4px;
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 600px) {
       .container {
-        width: min(100% - 26px, 1180px);
+        width: min(100% - 24px, 1200px);
       }
-
       section {
-        padding: 80px 0;
+        padding: 70px 0;
       }
-
       .status-grid,
       .architecture-layers,
-      .security-grid {
+      .security-grid,
+      .growth-flow {
         grid-template-columns: 1fr;
       }
-
       .architecture {
-        padding: 25px 15px;
+        padding: 28px 16px;
       }
-
       .arrow {
-        transform: rotate(90deg);
+        transform: rotate(90deg) scaleX(1);
       }
+      [dir="rtl"] .arrow {
+        transform: rotate(90deg) scaleX(-1);
+      }
+      .nav-links {
+        display: none;
+      }
+      .flow {
+        gap: 6px;
+      }
+      .node {
+        font-size: 12px;
+        padding: 12px 16px;
+      }
+      .hero {
+        min-height: 600px;
+      }
+    }
+
+    /* small polish */
+    ::selection {
+      background: #dbb96a;
+      color: #0b0a08;
+    }
+
+    /* scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      background: #0b0a08;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #dbb96a44;
+      border-radius: 12px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #dbb96a88;
     }
   </style>
 </head>
-
 <body>
-
-  <!-- NAVIGATION -->
 
   <nav>
     <div class="container nav-inner">
       <a href="#" class="logo">K.O.S</a>
-
       <div class="nav-links">
         <a href="#system">System</a>
         <a href="#architecture">Architecture</a>
         <a href="#security">Security</a>
         <a href="#growth">Growth</a>
-        <a href="#technology">Technology</a>
+        <a href="#technology">Tech</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
-
   <header class="hero">
     <div class="container hero-content">
-
-      <div class="eyebrow">
-        Sovereign Multi-Agent AI Platform
-      </div>
-
+      <div class="eyebrow">Sovereign Multi-Agent AI Platform</div>
       <h1>K.O.S</h1>
-
-      <h2>
-        Intelligence built to operate as a system.
-      </h2>
-
+      <h2>Intelligence built to operate as a system.</h2>
       <p class="hero-description">
         K.O.S — Kozer Operating System — is a sovereign multi-agent AI
         operating environment designed to understand complex requests,
         orchestrate specialized AI teams, execute controlled workflows,
         and operate across multiple AI providers.
       </p>
-
       <div class="hero-buttons">
-        <a class="btn btn-primary" href="#system">
-          Explore the System
-        </a>
-
-        <a
-          class="btn btn-secondary"
-          href="https://github.com/amanj940/K.O.S-boT"
-          target="_blank"
-        >
-          View on GitHub
-        </a>
+        <a class="btn btn-primary" href="#system">Explore the System</a>
+        <a class="btn btn-secondary" href="https://github.com/amanj940/K.O.S-boT" target="_blank">View on GitHub</a>
       </div>
-
       <div class="status-grid">
-
-        <div class="status">
-          <strong>Multi-Agent</strong>
-          <span>Specialized intelligent agents</span>
-        </div>
-
-        <div class="status">
-          <strong>Squad-Based</strong>
-          <span>Coordinated AI teams</span>
-        </div>
-
-        <div class="status">
-          <strong>Secure Runtime</strong>
-          <span>Controlled execution boundaries</span>
-        </div>
-
-        <div class="status">
-          <strong>Multi-Provider</strong>
-          <span>Resilient AI infrastructure</span>
-        </div>
-
+        <div class="status"><strong>Multi-Agent</strong><span>Specialized intelligent agents</span></div>
+        <div class="status"><strong>Squad-Based</strong><span>Coordinated AI teams</span></div>
+        <div class="status"><strong>Secure Runtime</strong><span>Controlled execution boundaries</span></div>
+        <div class="status"><strong>Multi-Provider</strong><span>Resilient AI infrastructure</span></div>
       </div>
-
     </div>
   </header>
 
-  <!-- SYSTEM -->
-
   <section id="system">
     <div class="container">
-
       <div class="section-label">01 — The System</div>
-
-      <h2 class="section-title">
-        Not a chatbot.<br />
-        A complete AI execution environment.
-      </h2>
-
+      <h2 class="section-title">Not a chatbot.<br />A complete AI execution environment.</h2>
       <p class="section-description">
         Traditional AI applications often revolve around a single model
         responding to a single conversation. K.O.S is designed differently:
         intelligence, agents, squads, tools, security, memory, providers,
         and execution are coordinated as one system.
       </p>
-
       <div class="cards">
-
         <div class="card">
           <div class="card-icon">🧠</div>
           <h3>Executive Intelligence</h3>
-
-          <p>
-            A central intelligence layer interprets what the user actually
-            wants and determines how the request should be executed.
-          </p>
-
-          <ul>
-            <li>Semantic classification</li>
-            <li>Intent routing</li>
-            <li>Dynamic task parsing</li>
-            <li>Arabic & English understanding</li>
-          </ul>
+          <p>A central intelligence layer interprets what the user actually wants and determines how the request should be executed.</p>
+          <ul><li>Semantic classification</li><li>Intent routing</li><li>Dynamic task parsing</li><li>Arabic &amp; English understanding</li></ul>
         </div>
-
         <div class="card">
           <div class="card-icon">👥</div>
           <h3>AI Squads</h3>
-
-          <p>
-            Specialized agents can operate together as coordinated teams
-            instead of isolated chatbots.
-          </p>
-
-          <ul>
-            <li>Specialized agent roles</li>
-            <li>Coordinated workflows</li>
-            <li>Squad isolation</li>
-            <li>Deterministic execution</li>
-          </ul>
+          <p>Specialized agents can operate together as coordinated teams instead of isolated chatbots.</p>
+          <ul><li>Specialized agent roles</li><li>Coordinated workflows</li><li>Squad isolation</li><li>Deterministic execution</li></ul>
         </div>
-
         <div class="card">
           <div class="card-icon">⚡</div>
           <h3>Unified Execution</h3>
-
-          <p>
-            K.O.S connects intelligence to actual execution through a unified
-            runtime and controlled tool layer.
-          </p>
-
-          <ul>
-            <li>Agent Runtime</li>
-            <li>Squad Runtime</li>
-            <li>Tool execution</li>
-            <li>Workflow coordination</li>
-          </ul>
+          <p>K.O.S connects intelligence to actual execution through a unified runtime and controlled tool layer.</p>
+          <ul><li>Agent Runtime</li><li>Squad Runtime</li><li>Tool execution</li><li>Workflow coordination</li></ul>
         </div>
-
         <div class="card">
           <div class="card-icon">🔄</div>
           <h3>Resilient AI Gateway</h3>
-
-          <p>
-            K.O.S is designed to work across multiple AI providers instead
-            of depending on one model or vendor.
-          </p>
-
-          <ul>
-            <li>Provider abstraction</li>
-            <li>Automatic failover</li>
-            <li>Rate-limit handling</li>
-            <li>Local-first with cloud readiness</li>
-          </ul>
+          <p>K.O.S is designed to work across multiple AI providers instead of depending on one model or vendor.</p>
+          <ul><li>Provider abstraction</li><li>Automatic failover</li><li>Rate-limit handling</li><li>Local-first with cloud readiness</li></ul>
         </div>
-
       </div>
-
     </div>
   </section>
-
-  <!-- ARCHITECTURE -->
 
   <section id="architecture">
     <div class="container">
-
       <div class="section-label">02 — Architecture</div>
-
-      <h2 class="section-title">
-        Intelligence → Orchestration → Execution
-      </h2>
-
-      <p class="section-description">
-        K.O.S separates understanding, orchestration, execution, security,
-        and provider infrastructure into coordinated layers.
-      </p>
-
+      <h2 class="section-title">Intelligence → Orchestration → Execution</h2>
+      <p class="section-description">K.O.S separates understanding, orchestration, execution, security, and provider infrastructure into coordinated layers.</p>
       <div class="architecture">
-
         <div class="flow">
-
-          <div class="node">User</div>
-
-          <div class="arrow">→</div>
-
-          <div class="node">Executive Intelligence</div>
-
-          <div class="arrow">→</div>
-
-          <div class="node">Intent Routing</div>
-
-          <div class="arrow">→</div>
-
-          <div class="node">Bots / Squads</div>
-
-          <div class="arrow">→</div>
-
-          <div class="node">Agent Runtime</div>
-
-          <div class="arrow">→</div>
-
-          <div class="node">Tools</div>
-
-          <div class="arrow">→</div>
-
+          <div class="node">User</div><div class="arrow">→</div>
+          <div class="node">Executive Intelligence</div><div class="arrow">→</div>
+          <div class="node">Intent Routing</div><div class="arrow">→</div>
+          <div class="node">Bots / Squads</div><div class="arrow">→</div>
+          <div class="node">Agent Runtime</div><div class="arrow">→</div>
+          <div class="node">Tools</div><div class="arrow">→</div>
           <div class="node">Result</div>
-
         </div>
-
         <div class="architecture-layers">
-
-          <div class="layer">
-            <strong>Intelligence</strong>
-            Understanding & routing
-          </div>
-
-          <div class="layer">
-            <strong>Runtime</strong>
-            Controlled execution
-          </div>
-
-          <div class="layer">
-            <strong>Security</strong>
-            Permissions & boundaries
-          </div>
-
-          <div class="layer">
-            <strong>Providers</strong>
-            Local & cloud AI
-          </div>
-
+          <div class="layer"><strong>Intelligence</strong>Understanding &amp; routing</div>
+          <div class="layer"><strong>Runtime</strong>Controlled execution</div>
+          <div class="layer"><strong>Security</strong>Permissions &amp; boundaries</div>
+          <div class="layer"><strong>Providers</strong>Local &amp; cloud AI</div>
         </div>
-
       </div>
-
     </div>
   </section>
-
-  <!-- SECURITY -->
 
   <section id="security" class="security">
     <div class="container">
-
       <div class="section-label">03 — Security</div>
-
-      <h2 class="section-title">
-        Powerful agents.<br />
-        Controlled boundaries.
-      </h2>
-
-      <p class="section-description">
-        K.O.S treats security as part of the runtime architecture rather
-        than an afterthought. Agents can be powerful without receiving
-        unrestricted access to the host environment.
-      </p>
-
+      <h2 class="section-title">Powerful agents.<br />Controlled boundaries.</h2>
+      <p class="section-description">K.O.S treats security as part of the runtime architecture rather than an afterthought. Agents can be powerful without receiving unrestricted access to the host environment.</p>
       <div class="security-grid">
-
-        <div class="security-item">
-          <strong>WorkspaceGuard</strong>
-          <span>Workspace confinement</span>
-        </div>
-
-        <div class="security-item">
-          <strong>PermissionManager</strong>
-          <span>Least-privilege policies</span>
-        </div>
-
-        <div class="security-item">
-          <strong>Tool Validation</strong>
-          <span>Controlled capabilities</span>
-        </div>
-
-        <div class="security-item">
-          <strong>Human Approval</strong>
-          <span>Sensitive operations</span>
-        </div>
-
-        <div class="security-item">
-          <strong>Squad Isolation</strong>
-          <span>Separated contexts</span>
-        </div>
-
+        <div class="security-item"><strong>WorkspaceGuard</strong><span>Workspace confinement</span></div>
+        <div class="security-item"><strong>PermissionManager</strong><span>Least-privilege policies</span></div>
+        <div class="security-item"><strong>Tool Validation</strong><span>Controlled capabilities</span></div>
+        <div class="security-item"><strong>Human Approval</strong><span>Sensitive operations</span></div>
+        <div class="security-item"><strong>Squad Isolation</strong><span>Separated contexts</span></div>
       </div>
-
     </div>
   </section>
 
-  <!-- SQUADS -->
-
   <section>
     <div class="container">
-
       <div class="section-label">04 — Agent Teams</div>
-
-      <h2 class="section-title">
-        AI teams instead of isolated agents.
-      </h2>
-
-      <p class="section-description">
-        K.O.S allows specialized agents to work together through coordinated
-        squad workflows. Each role focuses on a responsibility while the
-        system controls the overall execution.
-      </p>
-
+      <h2 class="section-title">AI teams instead of isolated agents.</h2>
+      <p class="section-description">K.O.S allows specialized agents to work together through coordinated squad workflows. Each role focuses on a responsibility while the system controls the overall execution.</p>
       <div class="squad-visual">
-
         <div class="squad-box">
-
           <h3>Example Engineering Squad</h3>
-
-          <div class="agent">
-            <span>01</span>
-            Lead Architect
-          </div>
-
-          <div class="agent">
-            <span>02</span>
-            Software Engineer
-          </div>
-
-          <div class="agent">
-            <span>03</span>
-            Security Sentinel
-          </div>
-
-          <div class="agent">
-            <span>04</span>
-            QA Engineer
-          </div>
-
+          <div class="agent"><span>01</span>Lead Architect</div>
+          <div class="agent"><span>02</span>Software Engineer</div>
+          <div class="agent"><span>03</span>Security Sentinel</div>
+          <div class="agent"><span>04</span>QA Engineer</div>
         </div>
-
         <div class="squad-box">
-
           <h3>How It Works</h3>
-
-          <div class="agent">
-            <span>01</span>
-            Understand
-          </div>
-
-          <div class="agent">
-            <span>02</span>
-            Plan
-          </div>
-
-          <div class="agent">
-            <span>03</span>
-            Assign
-          </div>
-
-          <div class="agent">
-            <span>04</span>
-            Execute
-          </div>
-
-          <div class="agent">
-            <span>05</span>
-            Aggregate
-          </div>
-
+          <div class="agent"><span>01</span>Understand</div>
+          <div class="agent"><span>02</span>Plan</div>
+          <div class="agent"><span>03</span>Assign</div>
+          <div class="agent"><span>04</span>Execute</div>
+          <div class="agent"><span>05</span>Aggregate</div>
         </div>
-
       </div>
-
     </div>
   </section>
 
-  <!-- PROVIDERS -->
-
   <section>
     <div class="container">
-
       <div class="section-label">05 — AI Infrastructure</div>
-
-      <h2 class="section-title">
-        One system.<br />
-        Multiple intelligence providers.
-      </h2>
-
-      <p class="section-description">
-        The provider layer abstracts different AI backends so K.O.S can
-        remain flexible, resilient, and local-first.
-      </p>
-
+      <h2 class="section-title">One system.<br />Multiple intelligence providers.</h2>
+      <p class="section-description">The provider layer abstracts different AI backends so K.O.S can remain flexible, resilient, and local-first.</p>
       <div class="provider-list">
-
         <div class="provider">Google Gemini</div>
         <div class="provider">Groq</div>
         <div class="provider">DeepSeek</div>
         <div class="provider">Ollama</div>
-        <div class="provider">OpenAI-Compatible Providers</div>
-
+        <div class="provider">OpenAI-Compatible</div>
       </div>
-
     </div>
   </section>
-
-  <!-- GROWTH -->
 
   <section id="growth">
     <div class="container">
-
       <div class="section-label">06 — Growth Intelligence</div>
-
-      <h2 class="section-title">
-        Intelligence that can discover opportunities.
-      </h2>
-
-      <p class="section-description">
-        The Growth capability extends K.O.S beyond conversation into
-        research, lead discovery, opportunity analysis, content generation,
-        and controlled outreach preparation.
-      </p>
-
+      <h2 class="section-title">Intelligence that can discover opportunities.</h2>
+      <p class="section-description">The Growth capability extends K.O.S beyond conversation into research, lead discovery, opportunity analysis, content generation, and controlled outreach preparation.</p>
       <div class="growth-flow">
-
-        <div class="growth-step">
-          <strong>Research</strong>
-          <span>Discover markets, problems and opportunities.</span>
-        </div>
-
-        <div class="growth-step">
-          <strong>Leads</strong>
-          <span>Identify relevant companies, projects and prospects.</span>
-        </div>
-
-        <div class="growth-step">
-          <strong>Opportunities</strong>
-          <span>Analyze potential services and business value.</span>
-        </div>
-
-        <div class="growth-step">
-          <strong>Content</strong>
-          <span>Create useful and targeted material.</span>
-        </div>
-
-        <div class="growth-step">
-          <strong>Outreach</strong>
-          <span>Prepare personalized communication with approval.</span>
-        </div>
-
+        <div class="growth-step"><strong>Research</strong><span>Discover markets, problems and opportunities.</span></div>
+        <div class="growth-step"><strong>Leads</strong><span>Identify relevant companies, projects and prospects.</span></div>
+        <div class="growth-step"><strong>Opportunities</strong><span>Analyze potential services and business value.</span></div>
+        <div class="growth-step"><strong>Content</strong><span>Create useful and targeted material.</span></div>
+        <div class="growth-step"><strong>Outreach</strong><span>Prepare personalized communication with approval.</span></div>
       </div>
-
     </div>
   </section>
-
-  <!-- TECHNOLOGY -->
 
   <section id="technology">
     <div class="container">
-
       <div class="section-label">07 — Technology</div>
-
-      <h2 class="section-title">
-        Built with modern infrastructure.
-      </h2>
-
-      <p class="section-description">
-        K.O.S combines a modern desktop interface, typed application core,
-        execution services, provider abstraction, testing infrastructure,
-        and container-ready deployment.
-      </p>
-
+      <h2 class="section-title">Built with modern infrastructure.</h2>
+      <p class="section-description">K.O.S combines a modern desktop interface, typed application core, execution services, provider abstraction, testing infrastructure, and container-ready deployment.</p>
       <div class="stack">
-
-        <div class="tech">TypeScript</div>
-        <div class="tech">React 19</div>
-        <div class="tech">Electron</div>
-        <div class="tech">Vite</div>
-        <div class="tech">TailwindCSS</div>
-        <div class="tech">Node.js</div>
-        <div class="tech">Docker</div>
-        <div class="tech">Supabase</div>
-        <div class="tech">Jest</div>
-        <div class="tech">Playwright</div>
-
+        <div class="tech">TypeScript</div><div class="tech">React 19</div>
+        <div class="tech">Electron</div><div class="tech">Vite</div>
+        <div class="tech">TailwindCSS</div><div class="tech">Node.js</div>
+        <div class="tech">Docker</div><div class="tech">Supabase</div>
+        <div class="tech">Jest</div><div class="tech">Playwright</div>
       </div>
-
     </div>
   </section>
-
-  <!-- DEPLOYMENT -->
 
   <section>
     <div class="container">
-
       <div class="section-label">08 — Deployment</div>
-
-      <h2 class="section-title">
-        Local-first.<br />
-        Desktop-ready. Cloud-capable.
-      </h2>
-
+      <h2 class="section-title">Local-first.<br />Desktop-ready. Cloud-capable.</h2>
       <div class="cards">
-
-        <div class="card">
-          <h3>Local AI</h3>
-          <p>
-            Run private AI infrastructure locally with providers such as
-            Ollama while keeping execution close to the user's environment.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Desktop</h3>
-          <p>
-            K.O.S is designed as a native desktop environment through
-            Electron, with desktop packaging support.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Control Plane</h3>
-          <p>
-            Backend services provide a foundation for headless and
-            programmatic execution.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Docker</h3>
-          <p>
-            Containerized deployment provides a path toward scalable
-            infrastructure and cloud execution.
-          </p>
-        </div>
-
+        <div class="card"><h3>Local AI</h3><p>Run private AI infrastructure locally with providers such as Ollama while keeping execution close to the user's environment.</p></div>
+        <div class="card"><h3>Desktop</h3><p>K.O.S is designed as a native desktop environment through Electron, with desktop packaging support.</p></div>
+        <div class="card"><h3>Control Plane</h3><p>Backend services provide a foundation for headless and programmatic execution.</p></div>
+        <div class="card"><h3>Docker</h3><p>Containerized deployment provides a path toward scalable infrastructure and cloud execution.</p></div>
       </div>
-
     </div>
   </section>
 
-  <!-- CTA -->
-
-  <section id="contact" class="cta">
-
+  <section class="cta">
     <div class="container">
-
-      <div class="section-label">
-        The Vision
-      </div>
-
-      <h2>
-        AI with purpose.<br />
-        Intelligence with control.
-      </h2>
-
-      <p>
-        K.O.S is being built as a new kind of AI environment — where
-        intelligence is not limited to conversation, agents have defined
-        responsibilities, squads collaborate, and execution happens inside
-        controlled boundaries.
-      </p>
-
+      <div class="section-label">The Vision</div>
+      <h2>AI with purpose.<br />Intelligence with control.</h2>
+      <p>K.O.S is being built as a new kind of AI environment — where intelligence is not limited to conversation, agents have defined responsibilities, squads collaborate, and execution happens inside controlled boundaries.</p>
       <div class="hero-buttons">
-
-        <a
-          class="btn btn-primary"
-          href="https://github.com/amanj940/K.O.S-boT"
-          target="_blank"
-        >
-          Explore K.O.S on GitHub
-        </a>
-
-        <a
-          class="btn btn-secondary"
-          href="mailto:YOUR_EMAIL@example.com"
-        >
-          Contact
-        </a>
-
+        <a class="btn btn-primary" href="https://github.com/amanj940/K.O.S-boT" target="_blank">Explore K.O.S on GitHub</a>
+        <a class="btn btn-secondary" href="mailto:YOUR_EMAIL@example.com">Contact</a>
       </div>
-
     </div>
-
   </section>
-
-  <!-- FOOTER -->
 
   <footer>
-    <div class="container">
-      © 2026 K.O.S — Kozer Operating System
-    </div>
+    <div class="container">© 2026 K.O.S — Kozer Operating System</div>
   </footer>
 
+  <!-- RTL toggle for demo (Arabic/Kurdish/Turkish) -->
+  <script>
+    (function() {
+      // detect browser language, set RTL for ar, ku, ckb, tur
+      const lang = navigator.language || navigator.languages?.[0] || 'en';
+      const rtlLangs = ['ar', 'ku', 'ckb', 'ur', 'fa', 'he', 'yi'];
+      const base = lang.split('-')[0];
+      if (rtlLangs.includes(base)) {
+        document.documentElement.setAttribute('dir', 'rtl');
+        document.documentElement.lang = base;
+      }
+      // also allow manual toggle via console: document.documentElement.dir='rtl'
+    })();
+  </script>
 </body>
 </html>
-```
